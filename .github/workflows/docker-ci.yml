@@ -28,9 +28,6 @@ jobs:
                 tags: ${{ steps.meta.outputs.tags }}
                 annotations: ${{ steps.meta.outputs.annotations }}
 
-            - name: Set up Docker Buildx
-              uses: docker/setup-buildx-action@v3
-
             - name: Build and push Docker image
               uses: docker/build-push-action@v6
               with:
@@ -39,4 +36,6 @@ jobs:
                 annotations: ${{ steps.meta.outputs.annotations }}
                 provenance: true
                 sbom: true
-                
+            
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v3
